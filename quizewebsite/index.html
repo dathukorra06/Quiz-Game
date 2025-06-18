@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Simple Quiz</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f2f2f2;
+      padding: 20px;
+    }
+    .quiz-container {
+      max-width: 600px;
+      margin: auto;
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    .question {
+      font-size: 20px;
+      margin-bottom: 15px;
+    }
+    .answers label {
+      display: block;
+      margin-bottom: 10px;
+    }
+    button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 16px;
+      background: #007BFF;
+      color: white;
+      border: none;
+      border-radius: 5px;
+    }
+    #result {
+      margin-top: 20px;
+      font-weight: bold;
+      color: green;
+    }
+  </style>
+</head>
+<body>
+
+<div class="quiz-container">
+  <div class="question" id="question">What is the capital of India?</div>
+  <div class="answers">
+    <label><input type="radio" name="answer" value="Delhi"> Delhi</label>
+    <label><input type="radio" name="answer" value="Mumbai"> Mumbai</label>
+    <label><input type="radio" name="answer" value="Kolkata"> Kolkata</label>
+    <label><input type="radio" name="answer" value="Chennai"> Chennai</label>
+  </div>
+  <button onclick="checkAnswer()">Submit</button>
+  <div id="result"></div>
+</div>
+
+<script>
+  function checkAnswer() {
+    const radios = document.getElementsByName("answer");
+    let selected;
+    for (const radio of radios) {
+      if (radio.checked) {
+        selected = radio.value;
+        break;
+      }
+    }
+
+    const result = document.getElementById("result");
+    if (selected === "Delhi") {
+      result.textContent = "Correct! 🎉";
+      result.style.color = "green";
+    } else {
+      result.textContent = "Incorrect ❌ Try again!";
+      result.style.color = "red";
+    }
+  }
+</script>
+
+</body>
+</html>
